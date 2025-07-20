@@ -59,6 +59,9 @@ Body (raw JSON):
   "stockQuantity": 10,
   "category": "Electronics"
 }
+
+Postman collection URL -https://ravi-inventory.postman.co/workspace/Ravi-Workspace~093c5ac7-88da-4177-822e-c98b527ee032/collection/934835-4e31ba95-8f51-4762-9d0b-7e48649fecbf?action=share&creator=934835
+
 🧩 7. .htaccess for Clean URLs (Optional)
 If you want to use routes like /products instead of index.php, add a .htaccess file:
 
