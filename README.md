@@ -72,8 +72,8 @@ And make sure mod_rewrite is enabled in Apache.
 
 
 ✅ Summary of Project Files
-File	                              Purpose
+File	                            Purpose
 index.php	              API router and main controller
-db.php	                PDO database connection
-config.php	            DB and secret config
+db.php	                  PDO database connection
+config.php	              DB and secret config
 .htaccess	              Clean URLs
