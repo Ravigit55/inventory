@@ -21,18 +21,14 @@ switch ($method) {
             $stmt->execute([$id]);
             $product = $stmt->fetch(PDO::FETCH_ASSOC);
             echo json_encode($product ?: ['message' => 'Product not found']);
-        } 
-        
+        }         
         else if ($category) {
            // $stmt = $pdo->query("SELECT * FROM products"); //ORDER BY id DESC ASC
           //  echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
            $stmt = $pdo->prepare("SELECT * FROM products WHERE category = ? AND stock <=$stock");
            $stmt->execute([$category]);
-           $category = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-           
-           //echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
-
+           $category = $stmt->fetchAll(PDO::FETCH_ASSOC);           
+         //echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
            echo json_encode($category ?: ['message' => 'category not found'] );
         }
         else if($stock) {
@@ -40,7 +36,6 @@ switch ($method) {
            $stmt->execute([$stock]);
            $stock = $stmt->fetchAll(PDO::FETCH_ASSOC);
            //echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
-
            echo json_encode($stock ?: ['message' => 'stock not available'] );
 
           }
