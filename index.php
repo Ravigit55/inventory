@@ -63,7 +63,28 @@ switch ($method) {
                 $stmt = $pdo->query($query);
                 echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
           }
-         else{
+
+        else if($page) {   
+                $page = max(1, $page);
+                $pageSize = max(1, $pageSize);
+                $offset = ($page - 1) * $pageSize;
+                $countStmt = $pdo->query("SELECT COUNT(*) FROM products");
+                $totalItems = $countStmt->fetchColumn();
+                $stmt = $pdo->prepare("SELECT * FROM products LIMIT :limit OFFSET :offset");
+                $stmt->bindValue(':limit', $pageSize, PDO::PARAM_INT);
+                $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+                $stmt->execute();
+                $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+             
+                echo json_encode([
+                    'page' => $page,
+                    'pageSize' => $pageSize,
+                    'totalItems' => (int) $totalItems,
+                    'data' => $products
+                ]);
+            }
+                
+        else{
             $stmt = $pdo->query("SELECT * FROM products");
             echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
         }
