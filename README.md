@@ -63,7 +63,7 @@ CREATE TABLE products (
     name VARCHAR(100) NOT NULL,
     description VARCHAR(500),
     price DECIMAL(10, 2) NOT NULL,
-    stockQuantity INT NOT NULL,
+    stock INT NOT NULL,
     category VARCHAR(50) NOT NULL,
     isActive BOOLEAN DEFAULT 1
 );
