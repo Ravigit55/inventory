@@ -1,32 +1,63 @@
-OPEN IN CODE MODE FOR PROPER FORMATE
+# 🧾 Inventory API – PHP + MySQL + XAMPP
 
-Here we have php code for the apis that we can call from postman.
+This project provides a simple RESTful API for managing a product inventory using **PHP**, **MySQL**, and **XAMPP**. The API supports full CRUD operations, filtering, sorting, search, pagination, and basic authentication.
 
-# code is not on any server it's all with local setup.
-🔧 1. Install XAMPP
+---
+
+## 🚀 Features
+
+- ✅ Create, Read, Update, Delete (CRUD) operations
+- 🔍 Filter by category and stock quantity
+- 📊 Sort by price (ascending/descending)
+- 🔎 Search by name or category
+- 📄 Pagination support
+- ⚙️ Input validation and error handling
+- 📫 REST API endpoints callable via Postman
+
+---
+
+## 🛠 Setup Instructions (Local)
+
+### 🔧 1. Install XAMPP
+
 If not already installed, download from:
-👉 https://www.apachefriends.org/index.html
+
+👉 [https://www.apachefriends.org/index.html](https://www.apachefriends.org/index.html)
 
 Then:
 
-Launch XAMPP Control Panel
+- Launch **XAMPP Control Panel**
+- Start **Apache** and **MySQL**
 
-Start Apache and MySQL
+---
 
-📁 2. Place your Project Folder
-Go to: C:\xampp\htdocs
-Create or paste your project folder (e.g. inventory_new) here.
+### 📁 2. Place Your Project Folder
 
-Example: C:\xampp\htdocs\inventory_new
+Go to your XAMPP root folder:
+C:\xampp\htdocs
 
-🛠 3. Create the MySQL Database
-Open your browser:
-👉 http://localhost/phpmyadmin
 
-Create a database:
+
+Create or paste your project folder (e.g., `inventory_new`) here:
+C:\xampp\htdocs\inventory_new
+
+
+
+---
+
+### 🗄 3. Create the MySQL Database
+
+Open in browser:
+
+👉 [http://localhost/phpmyadmin](http://localhost/phpmyadmin)
+
+Create a new database:
 inventory_db
-Create the products table using this SQL:
 
+
+Then create the `products` table with the following SQL:
+
+```sql
 CREATE TABLE products (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
@@ -36,23 +67,27 @@ CREATE TABLE products (
     category VARCHAR(50) NOT NULL,
     isActive BOOLEAN DEFAULT 1
 );
+⚙️ 4. Configuration
+Edit your config.php with the following settings:
 
-
-🧠 4. Set Up Config Files
-Ensure your config.php has:
 
 define('DB_HOST', 'localhost');
 define('DB_NAME', 'inventory_db');
 define('DB_USER', 'root');
 define('DB_PASS', '');
+🧪 5. Test API with Postman
+Use the following base URL:
 
 
-🧪 4. Test API Endpoints via Postman
-Example: Add product (POST)
+http://localhost/inventory_new/index.php
+Example – Add Product (POST):
+
 URL: http://localhost/inventory_new/index.php
+
 Method: POST
 
 Body (raw JSON):
+
 
 {
   "name": "Test Product",
@@ -61,21 +96,28 @@ Body (raw JSON):
   "stockQuantity": 10,
   "category": "Electronics"
 }
+📤 Postman Collection
+👉 Open Postman Collection
 
-Postman collection URL -https://ravi-inventory.postman.co/workspace/Ravi-Workspace~093c5ac7-88da-4177-822e-c98b527ee032/collection/934835-4e31ba95-8f51-4762-9d0b-7e48649fecbf?action=share&creator=934835
+🧩 6. Enable Clean URLs (Optional)
+To use pretty URLs like /products, create a .htaccess file in your root:
 
-🧩 5. .htaccess for Clean URLs (Optional)
-If you want to use routes like /products instead of index.php, add a .htaccess file:
 
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^ index.php [QSA,L]
-And make sure mod_rewrite is enabled in Apache.
+Make sure mod_rewrite is enabled in Apache (see httpd.conf > LoadModule rewrite_module).
 
+📂 Project Structure
+File  Purpose
+index.php Main API router and controller
+db.php  PDO database connection
+config.php  Database and secret configuration
+.htaccess (Optional) Rewrite rules for clean URLs
 
-✅ 6. Summary of Project Files
-File	                            Purpose
-index.php	              API router and main controller
-db.php	                     PDO database connection
-config.php	              DB and secret config
-.htaccess	              Clean URLs
+📌 Notes
+This project runs entirely on local setup.
+
+API is testable via Postman using the provided collection.
+
+Designed for demonstration and learning purposes.
