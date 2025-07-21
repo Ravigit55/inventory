@@ -41,7 +41,7 @@ C:\xampp\htdocs
 Create or paste your project folder (e.g., `inventory_new`) here:
 C:\xampp\htdocs\inventory_new
 
-
+or can get the project code from this git repo - https://github.com/Ravigit55/inventory
 
 ---
 
@@ -67,15 +67,17 @@ CREATE TABLE products (
     category VARCHAR(50) NOT NULL,
     isActive BOOLEAN DEFAULT 1
 );
-⚙️ 4. Configuration
+```
+### ⚙️ 4. Configuration
 Edit your config.php with the following settings:
 
-
-define('DB_HOST', 'localhost');
+```define('DB_HOST', 'localhost');
 define('DB_NAME', 'inventory_db');
 define('DB_USER', 'root');
 define('DB_PASS', '');
-🧪 5. Test API with Postman
+```
+
+### 🧪 5. Test API with Postman
 Use the following base URL:
 
 
@@ -85,7 +87,7 @@ Example – Add Product (POST):
 URL: http://localhost/inventory_new/index.php
 
 Method: POST
-
+```
 Body (raw JSON):
 
 
@@ -96,26 +98,30 @@ Body (raw JSON):
   "stockQuantity": 10,
   "category": "Electronics"
 }
-📤 Postman Collection
-👉 Open Postman Collection
 
-🧩 6. Enable Clean URLs (Optional)
+```
+### 📤6. Postman Collection
+👉 Open Postman Collection - -https://ravi-inventory.postman.co/workspace/Ravi-Workspace~093c5ac7-88da-4177-822e-c98b527ee032/collection/934835-4e31ba95-8f51-4762-9d0b-7e48649fecbf?action=share&creator=934835
+
+### 🧩 7. Enable Clean URLs (Optional)
 To use pretty URLs like /products, create a .htaccess file in your root:
 
-
+```
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^ index.php [QSA,L]
 Make sure mod_rewrite is enabled in Apache (see httpd.conf > LoadModule rewrite_module).
+```
 
-📂 Project Structure
+### 📂 8. Project Structure
 File  Purpose
 index.php Main API router and controller
 db.php  PDO database connection
 config.php  Database and secret configuration
 .htaccess (Optional) Rewrite rules for clean URLs
 
-📌 Notes
+
+### 📌 9. Notes
 This project runs entirely on local setup.
 
 API is testable via Postman using the provided collection.
