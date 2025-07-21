@@ -13,9 +13,9 @@ Start Apache and MySQL
 
 📁 2. Place your Project Folder
 Go to: C:\xampp\htdocs
-Create or paste your project folder (e.g. inventory-api) here.
+Create or paste your project folder (e.g. inventory_new) here.
 
-Example: C:\xampp\htdocs\inventory-api
+Example: C:\xampp\htdocs\inventory_new
 
 🛠 3. Create the MySQL Database
 Open your browser:
@@ -47,7 +47,7 @@ define('DB_PASS', '');
 
 🧪 6. Test API Endpoints via Postman
 Example: Add product (POST)
-URL: http://localhost/inventory-api/index.php
+URL: http://localhost/inventory_new/index.php
 Method: POST
 
 Body (raw JSON):
