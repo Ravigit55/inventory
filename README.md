@@ -65,7 +65,7 @@ CREATE TABLE products (
     price DECIMAL(10, 2) NOT NULL,
     stock INT NOT NULL,
     category VARCHAR(50) NOT NULL,
-    isActive BOOLEAN DEFAULT 1
+    
 );
 ```
 ### ⚙️ 4. Configuration
