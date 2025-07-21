@@ -114,11 +114,13 @@ Make sure mod_rewrite is enabled in Apache (see httpd.conf > LoadModule rewrite_
 ```
 
 ### 📂 8. Project Structure
-File  Purpose
-index.php Main API router and controller
-db.php  PDO database connection
-config.php  Database and secret configuration
-.htaccess (Optional) Rewrite rules for clean URLs
+| File         | Purpose                                 |
+| ------------ | --------------------------------------- |
+| `index.php`  | Main API router and controller          |
+| `db.php`     | PDO database connection                 |
+| `config.php` | Database and secret configuration       |
+| `.htaccess`  | (Optional) Rewrite rules for clean URLs |
+
 
 
 ### 📌 9. Notes
@@ -127,3 +129,5 @@ This project runs entirely on local setup.
 API is testable via Postman using the provided collection.
 
 Designed for demonstration and learning purposes.
+
+
