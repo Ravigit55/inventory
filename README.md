@@ -38,7 +38,7 @@ CREATE TABLE products (
 );
 
 
-🧠 5. Set Up Config Files
+🧠 4. Set Up Config Files
 Ensure your config.php has:
 
 define('DB_HOST', 'localhost');
@@ -47,7 +47,7 @@ define('DB_USER', 'root');
 define('DB_PASS', '');
 
 
-🧪 6. Test API Endpoints via Postman
+🧪 4. Test API Endpoints via Postman
 Example: Add product (POST)
 URL: http://localhost/inventory_new/index.php
 Method: POST
@@ -64,7 +64,7 @@ Body (raw JSON):
 
 Postman collection URL -https://ravi-inventory.postman.co/workspace/Ravi-Workspace~093c5ac7-88da-4177-822e-c98b527ee032/collection/934835-4e31ba95-8f51-4762-9d0b-7e48649fecbf?action=share&creator=934835
 
-🧩 7. .htaccess for Clean URLs (Optional)
+🧩 5. .htaccess for Clean URLs (Optional)
 If you want to use routes like /products instead of index.php, add a .htaccess file:
 
 RewriteEngine On
@@ -73,7 +73,7 @@ RewriteRule ^ index.php [QSA,L]
 And make sure mod_rewrite is enabled in Apache.
 
 
-✅ Summary of Project Files
+✅ 6. Summary of Project Files
 File	                            Purpose
 index.php	              API router and main controller
 db.php	                     PDO database connection
