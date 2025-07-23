@@ -25,14 +25,16 @@ switch ($method) {
         else if ($category) {
            // $stmt = $pdo->query("SELECT * FROM products"); //ORDER BY id DESC ASC
           //  echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
-           $stmt = $pdo->prepare("SELECT * FROM products WHERE category = ? AND stock <=$stock");
+           $stmt = $pdo->prepare("SELECT * FROM products WHERE category = ? AND stock >=$stock");
            $stmt->execute([$category]);
-           $category = $stmt->fetchAll(PDO::FETCH_ASSOC);           
+           $result = $stmt->fetchAll(PDO::FETCH_ASSOC);           
          //echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
-           echo json_encode($category ?: ['message' => 'category not found'] );
+           
+           echo json_encode($result ?: ['message' => 'stock not found in provided category'] );
+           
         }
         else if($stock) {
-           $stmt = $pdo->prepare("SELECT * FROM products WHERE stock <= ?");
+           $stmt = $pdo->prepare("SELECT * FROM products WHERE stock = ?");
            $stmt->execute([$stock]);
            $stock = $stmt->fetchAll(PDO::FETCH_ASSOC);
            //echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
@@ -42,7 +44,7 @@ switch ($method) {
 
         else if ($search)  {
 
-                 $stmt = $pdo->prepare("SELECT * FROM products Where Name || category LIKE '%$search%'");
+                 $stmt = $pdo->prepare("SELECT * FROM products Where name || category LIKE '%$search%'");
                  $stmt->execute([$search]);
                  $search = $stmt->fetchAll(PDO::FETCH_ASSOC);
                  echo json_encode($search ?: ['message' => 'Data not found'] );
@@ -114,7 +116,7 @@ switch ($method) {
       //  echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
       //  echo json_encode($stmt ?: ['message' => 'ID not found'] );
 
-        break;
+        break;  
 
     default:
         http_response_code(405);
