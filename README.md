@@ -52,7 +52,8 @@ Open in browser:
 👉 [http://localhost/phpmyadmin](http://localhost/phpmyadmin)
 
 Create a new database:
-```CREATE DATABASE inventory_db;
+```
+CREATE DATABASE inventory_db;
 USE inventory_db;
 ```
 Then create the `products` table with the following SQL:
