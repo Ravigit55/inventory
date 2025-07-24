@@ -52,12 +52,12 @@ Open in browser:
 👉 [http://localhost/phpmyadmin](http://localhost/phpmyadmin)
 
 Create a new database:
-inventory_db
-
-
+```CREATE DATABASE inventory_db;
+USE inventory_db;
+```
 Then create the `products` table with the following SQL:
 
-```sql
+```
 CREATE TABLE products (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
