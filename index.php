@@ -1,6 +1,7 @@
 <?php
 header("Content-Type: application/json");
 require 'db.php';
+require_once 'auth.php';
 
 
 // Get method and input
@@ -13,6 +14,15 @@ $sort = $_GET['sort'] ?? null;
 $search=$_GET['search'] ?? null;
 $page = $_GET['page'] ?? null ;
 $pageSize =$_GET['pagesize'] ?? null;
+
+$authHeader = $_SERVER['HTTP_AUTHORIZATION'] ?? '';
+$token = str_replace('Bearer ', '', $authHeader);
+$authenticatedUser = validateJWT($token);
+ if (!$authenticatedUser) {
+        http_response_code(401);
+        echo json_encode(['error' => 'Unauthorized']);
+        exit;
+    }
 
 switch ($method) {
     case 'GET':
@@ -44,7 +54,7 @@ switch ($method) {
 
         else if ($search)  {
 
-                 $stmt = $pdo->prepare("SELECT * FROM products Where name || category LIKE '%$search%'");
+                 $stmt = $pdo->prepare("SELECT * FROM products Where name OR category LIKE '%$search%'");
                  $stmt->execute([$search]);
                  $search = $stmt->fetchAll(PDO::FETCH_ASSOC);
                  echo json_encode($search ?: ['message' => 'Data not found'] );
